@@ -55,7 +55,11 @@ class _MyHomePageState extends State<MyHomePage> {
   // Method for opening bottom modal sheet
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(context: ctx, builder: (_) {
-      return NewTransaction(_addNewTransaction);
+      return GestureDetector(
+        onTap: () {},
+        child: NewTransaction(_addNewTransaction),
+        behavior: HitTestBehavior.opaque,
+      );
     });
   }
 
