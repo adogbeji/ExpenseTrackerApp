@@ -14,7 +14,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
-        fontFamily: 'Quicksand'
+        fontFamily: 'Quicksand',
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                headline6: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+          ),
       ),
       home: MyHomePage(),
     );
@@ -42,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       date: DateTime.now(),
     ),
   ];
-  
+
   // Method for adding new transactions
   void _addNewTransaction(String txTitle, double txAmount) {
     final newTx = Transaction(
@@ -56,23 +65,26 @@ class _MyHomePageState extends State<MyHomePage> {
       _userTransactions.add(newTx);
     });
   }
-  
+
   // Method for opening bottom modal sheet
   void _startAddNewTransaction(BuildContext ctx) {
-    showModalBottomSheet(context: ctx, builder: (_) {
-      return GestureDetector(
-        onTap: () {},
-        child: NewTransaction(_addNewTransaction),
-        behavior: HitTestBehavior.opaque,
-      );
-    });
+    showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return GestureDetector(
+            onTap: () {},
+            child: NewTransaction(_addNewTransaction),
+            behavior: HitTestBehavior.opaque,
+          );
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Personal Expenses'),
+        title: Text('Personal Expenses',
+            style: TextStyle(fontFamily: 'Open Sans')),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
@@ -93,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 elevation: 5,
               ),
             ),
-            TransactionList(_userTransactions),  
+            TransactionList(_userTransactions),
           ],
         ),
       ),
