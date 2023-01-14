@@ -12,7 +12,12 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      child: ListView.builder( // Scrollable list inside Container
+      child: transactions.isEmpty ? Column(
+        children: <Widget>[
+          Text('No transactions added yet!', style: Theme.of(context).textTheme.headline6,),
+          Image.asset('assets/images/waiting.png'),
+        ],
+      ) :  ListView.builder( // Scrollable list inside Container
         itemBuilder: (ctx, index) {
           return Card(
             child: Row(
