@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../models/transaction.dart';
+
 class Chart extends StatelessWidget {
+  final List<Transaction> recentTransactions;
+
+  Chart(this.recentTransactions);
+
   List<Map<String, Object>> get groupedTransactionValues {
     return List.generate(7, (index) {
+      final weekDay = DateTime.now();
       return {'day': 'T', 'amount': 9.99};
     });
   }
