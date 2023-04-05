@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Duration(days: 7),
         ),
       );
-    });
+    }).toList();
   }
 
   // Method for adding new transactions
@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
             //     elevation: 5,
             //   ),
             // ),
-            //  Chart(),
+             Chart(_recentTransactions),
             TransactionList(_userTransactions),
           ],
         ),
